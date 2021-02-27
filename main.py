@@ -47,6 +47,14 @@ while running:
         running = False
         score.game_over()
 
+    # Detección de la colisión con la cola de la serpiente
+    for segment in snake.segments:
+        if segment == snake.head:
+            pass
+        elif snake.head.position() == segment.position():
+            running = False
+            score.game_over()
+
 
 # Salida del programa
 screen.exitonclick()
