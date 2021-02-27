@@ -37,6 +37,7 @@ while running:
     snake.move()
 
     # Detección de la colisión con la comida
+    # El número de la distancia no importa en tanto sea menor al tamaño de los objetos
     if snake.head.distance(food) < 15:
         food.refresh()
         score.add_score()
@@ -48,10 +49,9 @@ while running:
         score.game_over()
 
     # Detección de la colisión con la cola de la serpiente
-    for segment in snake.segments:
-        if segment == snake.head:
-            pass
-        elif snake.head.position() == segment.position():
+    # El número de la distancia no importa en tanto sea menor al tamaño de los objetos
+    for segment in snake.segments[1:]:
+        if snake.head.distance(segment) < 10:
             running = False
             score.game_over()
 
