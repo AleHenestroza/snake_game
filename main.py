@@ -40,6 +40,7 @@ while running:
     if snake.head.distance(food) < 15:
         food.refresh()
         score.add_score()
+        snake.extend()
 
     # Detección de la colisión con la pared
     if snake.head.xcor() > 390 or snake.head.xcor() < -390 or snake.head.ycor() > 390 or snake.head.ycor() < -390:
