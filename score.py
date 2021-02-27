@@ -1,5 +1,8 @@
 from turtle import Turtle
 
+ALIGNMENT = "center"
+FONT = ("Arial", 18, "normal")
+
 
 class Score(Turtle):
 
@@ -7,13 +10,19 @@ class Score(Turtle):
         super().__init__()
         self.hideturtle()
         self.penup()
-        self.color("white")
-        self.goto(x=-40, y=270)
         self.points = 0
+        self.goto(x=0, y=370)
+        self.color("white")
+        self.write_score()
 
     def add_score(self):
         self.points += 1
+        self.write_score()
 
     def write_score(self):
         self.clear()
-        self.write(arg=("Score: " + str(self.points)), font=("Arial", 14, "normal"))
+        self.write(arg=("Score: " + str(self.points)), align=ALIGNMENT, font=FONT)
+
+    def game_over(self):
+        self.goto(x=0, y=0)
+        self.write(arg="GAME OVER", align=ALIGNMENT, font=FONT)

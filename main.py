@@ -10,7 +10,7 @@ import time
 
 # Setup de la ventana
 screen = Screen()
-screen.setup(width=600, height=600, startx=600, starty=200)
+screen.setup(width=800, height=800, startx=600, starty=200)
 screen.bgcolor("black")
 screen.title("A Snake Game - by AleHenestroza")
 screen.tracer(0)  # No se van a renderizar los cambios en la pantalla hasta que se actualice manualmente
@@ -31,15 +31,21 @@ screen.onkey(snake.right, "Right")
 running = True
 while running:
     screen.update()  # Actualización de la pantalla
-    time.sleep(0.1)  # Delay de la actualización de la pantalla
+    time.sleep(0.09)  # Delay de la actualización de la pantalla
     # Con este delay, se puede controlar la velocidad de actualización de la ventana, efectivamente controlando
     # la velocidad del juego.
     snake.move()
-    score.write_score()
 
     # Detección de la colisión con la comida
     if snake.head.distance(food) < 15:
         food.refresh()
         score.add_score()
 
+    # Detección de la colisión con la pared
+    if snake.head.xcor() > 390 or snake.head.xcor() < -390 or snake.head.ycor() > 390 or snake.head.ycor() < -390:
+        running = False
+        score.game_over()
+
+
+# Salida del programa
 screen.exitonclick()
