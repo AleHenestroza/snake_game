@@ -5,6 +5,7 @@
 from turtle import Screen
 from snake import Snake
 from food import Food
+from score import Score
 import time
 
 # Setup de la ventana
@@ -17,6 +18,7 @@ screen.tracer(0)  # No se van a renderizar los cambios en la pantalla hasta que 
 # Setup de los objetos
 snake = Snake()
 food = Food()
+score = Score()
 
 # Listeners
 screen.listen()
@@ -33,9 +35,11 @@ while running:
     # Con este delay, se puede controlar la velocidad de actualización de la ventana, efectivamente controlando
     # la velocidad del juego.
     snake.move()
+    score.write_score()
 
     # Detección de la colisión con la comida
     if snake.head.distance(food) < 15:
         food.refresh()
+        score.add_score()
 
 screen.exitonclick()
