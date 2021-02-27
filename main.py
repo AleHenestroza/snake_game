@@ -31,7 +31,7 @@ screen.onkey(snake.right, "Right")
 running = True
 while running:
     screen.update()  # Actualización de la pantalla
-    time.sleep(0.09)  # Delay de la actualización de la pantalla
+    time.sleep(0.085)  # Delay de la actualización de la pantalla
     # Con este delay, se puede controlar la velocidad de actualización de la ventana, efectivamente controlando
     # la velocidad del juego.
     snake.move()

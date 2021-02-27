@@ -12,7 +12,7 @@ class Score(Turtle):
         self.penup()
         self.points = 0
         self.goto(x=0, y=370)
-        self.color("white")
+        self.color("yellow")
         self.write_score()
 
     def add_score(self):
