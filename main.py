@@ -45,15 +45,15 @@ while running:
 
     # Detección de la colisión con la pared
     if snake.head.xcor() > 390 or snake.head.xcor() < -390 or snake.head.ycor() > 390 or snake.head.ycor() < -390:
-        running = False
-        score.game_over()
+        score.reset()
+        snake.reset()
 
     # Detección de la colisión con la cola de la serpiente
     # El número de la distancia no importa en tanto sea menor al tamaño de los objetos
     for segment in snake.segments[1:]:
         if snake.head.distance(segment) < 10:
-            running = False
-            score.game_over()
+            score.reset()
+            snake.reset()
 
 
 # Salida del programa
